@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   heroTl.to('#heroBg', { scale: 1.18, duration: 1.6, ease: 'power1.out' }, 0);
   heroTl.to('#heroTint', { background: "linear-gradient(180deg, rgba(68,0,0,0.45), rgba(0,0,0,0.55))", duration: 1.4, ease: 'power2.out' }, 0.2);
   gsap.set('#lava', { scaleY: 0.03, scaleX: 0.2, opacity: 0 });
-  heroTl.to('#lava', { opacity: 1, scaleY: 1.06, scaleX: 1.2, y: '-20vh', x: '-2vh', duration: 1.2, ease: 'power2.out' }, 0.25); gsap.set('#smoke', { opacity: 0, scale: 0.98 });
+  heroTl.to('#lava', { opacity: 1, scaleY: 1.06, scaleX: 1.2, y: '-18vh', x: '-3.7vh', duration: 1.2, ease: 'power2.out' }, 0.25); gsap.set('#smoke', { opacity: 0, scale: 0.98 });
   heroTl.to('#smoke', { opacity: 0.98, y: '-26vh', scale: 1.06, duration: 1.8, ease: 'power2.out' }, 0.5);
   gsap.set('#ash', { opacity: 0, y: 0 });
   heroTl.to('#ash', { opacity: 1, y: '-6vh', duration: 1.1, ease: 'power2.out' }, 0.45);

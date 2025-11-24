@@ -124,7 +124,7 @@ header.hero {
 
 .lava {
   width: 30vw;
-  height: 50vh;
+  height: 40vh;
   background-image: url('assets/Flamme.png');
   background-size: cover;
   background-position: center bottom;
