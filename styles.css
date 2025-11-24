@@ -102,7 +102,7 @@ header.hero {
   position: absolute;
   left: 43%;
   transform: translateX(-50%);
-  bottom: -50px;
+  bottom: -30px;
   width: 70vw;
   max-width: 900px;
   height: 70vh;
