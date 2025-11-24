@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function(){
   heroTl.to('#heroBg',{scale:1.18,duration:1.6,ease:'power1.out'},0);
   heroTl.to('#heroTint',{background:"linear-gradient(180deg, rgba(68,0,0,0.45), rgba(0,0,0,0.55))",duration:1.4,ease:'power2.out'},0.2);
   gsap.set('#lava',{scaleY:0.03,opacity:0});
-  heroTl.to('#lava',{opacity:1,scaleY:1.06,y:'-10vh',duration:1.2,ease:'power2.out'},0.25);
+  heroTl.to('#lava',{opacity:1,scaleY:1.06,y:'-9vh',duration:1.2,ease:'power2.out'},0.25);
   gsap.set('#smoke',{opacity:0,scale:0.98});
   heroTl.to('#smoke',{opacity:0.98,y:'-26vh',scale:1.06,duration:1.8,ease:'power2.out'},0.5);
   gsap.set('#ash',{opacity:0,y:0});
@@ -60,7 +60,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
   /* Loop Smoke & Lava */
   gsap.to('#smoke',{x:40,duration:8,yoyo:true,repeat:-1,ease:'sine.inOut',opacity:0.95});
-  gsap.to('#lava',{x:-20,duration:6,yoyo:true,repeat:-1,ease:'sine.inOut'});
+  gsap.to('#lava', {
+  rotation: 3,         // swings +3 degrees (you can change this)
+  duration: 4,
+  yoyo: true,
+  repeat: -1,
+  ease: "sine.inOut"
+});
 
   /* Panels fade-ins */
   gsap.utils.toArray('section.panel').forEach(panel=>{

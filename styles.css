@@ -100,16 +100,16 @@ header.hero {
 
 .v-base {
   position: absolute;
-  left: 50%;
+  left: 43%;
   transform: translateX(-50%);
-  bottom: -110px;
-  width: 60vw;
-  max-width: 800px;
-  height: 56vh;
-  background-image: url('assets/Vulkan.png');
+  bottom: -50px;
+  width: 70vw;
+  max-width: 900px;
+  height: 70vh;
+  background-image: url('assets/VulkanAnimation.png');
   background-size: cover;
   background-position: center bottom;
-  z-index: 5;
+  z-index: 6;
   filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6));
 }
 
@@ -130,6 +130,7 @@ header.hero {
   background-position: center bottom;
   opacity: 0;
   transform-origin: bottom center;
+  z-index: 5;
 }
 
 .smoke {
