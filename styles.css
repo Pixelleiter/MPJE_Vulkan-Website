@@ -1,4 +1,6 @@
-/* ---------------- Reset ---------------- */
+/* =========================================================
+   RESET
+========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,7 +18,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ---------------- Preloader ---------------- */
+/* =========================================================
+   PRELOADER
+========================================================= */
 #preloader {
   position: fixed;
   inset: 0;
@@ -45,7 +49,9 @@ body {
   border-radius: 6px;
 }
 
-/* ---------------- Cursor ---------------- */
+/* =========================================================
+   CURSOR
+========================================================= */
 .cursor {
   pointer-events: none;
   position: fixed;
@@ -65,8 +71,9 @@ body {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* ---------------- Hero / Vulkan ---------------- */
-
+/* =========================================================
+   HERO (VOLCANO)
+========================================================= */
 header.hero {
   position: relative;
   height: 100vh;
@@ -77,6 +84,7 @@ header.hero {
   justify-content: center;
 }
 
+/* --- Hero BG + Tint --- */
 .hero__bg {
   position: absolute;
   inset: 0;
@@ -93,65 +101,7 @@ header.hero {
   mix-blend-mode: multiply;
 }
 
-/* ---------------- Globaler Top-Header ---------------- */
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 4rem;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  z-index: 9999;
-}
-
-.topnav .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #2a2a2a;
-  letter-spacing: .5px;
-}
-
-.topnav nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #2a2a2a;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.topnav nav a:hover {
-  color: #6b8e4e;
-}
-
-/* Button aus Anfrage */
-.topnav .btn {
-  background:#2a2a2a;
-  color:white;
-  padding:0.6rem 1.2rem;
-  border-radius:9999px;
-  border:none;
-  cursor:pointer;
-  transition: all .3s ease;
-}
-
-.topnav .btn:hover {
-  background:#6b8e4e;
-}
-
-/* Mobile */
-@media(max-width:800px){
-  .topnav {
-    padding: 1rem 1.5rem;
-  }
-  .topnav nav a {
-    margin: 0 0.6rem;
-  }
-}
-
+/* --- Volcano Layers --- */
 .vcontainer {
   position: absolute;
   inset: 0;
@@ -209,6 +159,7 @@ header.hero {
   opacity: 0;
 }
 
+/* --- Hero Text --- */
 .hero__content {
   position: relative;
   z-index: 10;
@@ -239,7 +190,69 @@ p.lead {
   margin: 0 auto;
 }
 
-/* ---------------- Panels vertikal ---------------- */
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+
+.topnav .logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  letter-spacing: .5px;
+}
+
+.topnav nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #2a2a2a;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.topnav nav a:hover {
+  color: #6b8e4e;
+}
+
+.topnav .btn {
+  background:#2a2a2a;
+  color:white;
+  padding:0.6rem 1.2rem;
+  border-radius:9999px;
+  border:none;
+  cursor:pointer;
+  transition: all .3s ease;
+}
+
+.topnav .btn:hover {
+  background:#6b8e4e;
+}
+
+/* --- Mobile --- */
+@media(max-width:800px){
+  .topnav {
+    padding: 1rem 1.5rem;
+  }
+  .topnav nav a {
+    margin: 0 0.6rem;
+  }
+}
+
+/* =========================================================
+   VERTICAL PANELS
+========================================================= */
 section.panel {
   min-height: 80vh;
   padding: 6vh 6vw;
@@ -267,7 +280,9 @@ section.panel.alt {
   line-height: 1.6;
 }
 
-/* ---------------- Panels horizontal ---------------- */
+/* =========================================================
+   HORIZONTAL PANELS
+========================================================= */
 .panel.horizontal {
   position: relative;
   height: 100vh;
@@ -289,45 +304,18 @@ section.panel.alt {
   color: #fff;
 }
 
-/* ---------------- Audio Player ---------------- */
-.player {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  background: rgba(255,255,255,0.04);
-  padding: 0.6rem;
-  border-radius: 12px;
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  z-index: 200;
-}
-
-.player .btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(180deg,#ff6b3d,#c62a00);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-grid;
-  place-items: center;
-}
-
-.player .meta {
-  min-width: 170px;
-}
-
-/* ---------------- Footer ---------------- */
+/* =========================================================
+   FOOTER
+========================================================= */
 footer {
   padding: 36px 18px;
   text-align: center;
   color: rgba(255,255,255,.6);
 }
 
-/* ---------------- Responsive ---------------- */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media (max-width:800px){
   .v-base { width: 95vw; height: 46vh; }
   .lava { width: 60vw; }
@@ -336,7 +324,9 @@ footer {
   h1 { font-size: clamp(26px, 10vw, 44px); }
 }
 
-/* ---------------- Accessibility ---------------- */
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 @media (prefers-reduced-motion: reduce){
   .cursor { display: none; }
 }
