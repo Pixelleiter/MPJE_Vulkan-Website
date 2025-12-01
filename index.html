@@ -1,38 +1,50 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Volcano — GSAP Scroll Experience (Vertikal + Horizontal)</title>
+  <!-- ================= META / HEAD ================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Volcano — GSAP Scroll Experience (Vertikal + Horizontal)</title>
 
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-<link rel="stylesheet" href="styles.css">
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-
-<!-- Hola Marv -->
- <!-- Hola Liam -->
-
-
-  <!-- Preloader -->
+  <!-- ================= PRELOADER ================= -->
   <div id="preloader" aria-hidden="false">
     Lade Szene...
     <div class="bar"><i></i></div>
   </div>
 
-
-  <!-- Custom Cursor -->
+  <!-- ================= CUSTOM CURSOR ================= -->
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
+  <!-- ================= SITE WRAPPER ================= -->
   <div class="site" id="site">
+    
+    <!-- ================= GLOBAL NAVIGATION ================= -->
+    <header class="topnav">
+      <div class="logo">VOLCANO</div>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#panel1">Info</a>
+        <a href="#panel3">Galerie</a>
+        <a href="#hpanel1">Horizontal</a>
+      </nav>
+      <button class="btn">Kontakt</button>
+    </header>
 
-    <!-- HERO Vulkan (vertikal) -->
+    <!-- ================= HERO SECTION (Vulkan) ================= -->
     <header class="hero" id="hero">
       <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
       <div class="hero__tint" id="heroTint" aria-hidden="true"></div>
 
+      <!-- Vulkan Layers -->
       <div class="vcontainer" aria-hidden="true">
         <div class="v-base" id="vbase" role="img" aria-label="Vulkan"></div>
         <div class="layer lava" id="lava" aria-hidden="true"></div>
@@ -47,7 +59,7 @@
       </div>
     </header>
 
-    <!-- Vertikale Info-Panels -->
+    <!-- ================= VERTICAL PANELS ================= -->
     <section class="panel alt" id="panel1">
       <div class="inner">
         <h2>Was passiert bei einem Vulkanausbruch?</h2>
@@ -69,7 +81,7 @@
       </div>
     </section>
 
-    <!-- Horizontale Scroll-Sektion -->
+    <!-- ================= HORIZONTAL SCROLL PANEL ================= -->
     <section class="panel horizontal" id="hpanel1">
       <div class="inner-wrapper">
         <div class="inner-slide" style="background:#1a1a1a;">Erste Szene</div>
@@ -78,13 +90,14 @@
       </div>
     </section>
 
+    <!-- ================= FOOTER ================= -->
     <footer>
       Demo — inspiriert, aber eigenständig • Alle Platzhalter-Assets durch eigene ersetzen.
     </footer>
 
-  </div>
+  </div><!-- /site -->
 
-  <!-- Audio Player -->
+  <!-- ================= AUDIO PLAYER ================= -->
   <div class="player" role="region" aria-label="Audio Player">
     <button class="btn" id="playBtn" aria-pressed="false">▶</button>
     <div class="meta">
@@ -92,11 +105,12 @@
       <div style="font-size:12px;opacity:.8">Klicke Play zum Hören</div>
     </div>
     <audio id="bgAudio" preload="none">
-      <source src="https://cdn.pixabay.com/download/audio/2021/10/26/audio_5d49d8d7a0.mp3?filename=ambient-11229.mp3" type="audio/mpeg">
+      <source src="https://cdn.pixabay.com/download/audio/2021/10/26/audio_5d49d8d7a0.mp3?filename=ambient-11229.mp3" type="audio/mpeg" />
       Dein Browser unterstützt kein Audio.
     </audio>
   </div>
 
-<script src="main.js"></script>
+  <!-- ================= MAIN SCRIPT ================= -->
+  <script src="main.js"></script>
 </body>
 </html>
