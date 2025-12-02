@@ -101,7 +101,7 @@ header.hero {
   mix-blend-mode: multiply;
 }
 
-/* --- Volcano Layers --- */
+/* --- Vulkan Layers --- */
 .vcontainer {
   position: absolute;
   inset: 0;
@@ -135,6 +135,7 @@ header.hero {
 .lava {
   width: 30vw;
   height: 40vh;
+  left: 48.5%;
   background-image: url('assets/Flamme.png');
   background-size: cover;
   background-position: center bottom;
@@ -202,7 +203,7 @@ p.lead {
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(33, 31, 30, 0);
   backdrop-filter: blur(10px);
   z-index: 9999;
 }
