@@ -8,7 +8,6 @@
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
@@ -17,20 +16,16 @@
 
 <body>
 
-  <!-- PRELOADER -->
   <div id="preloader">
     Lade Szene...
     <div class="bar"><i></i></div>
   </div>
 
-  <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
 
-  <!-- SITE WRAPPER -->
   <div class="site">
 
-    <!-- NAVIGATION -->
-    <header class="topnav">
+    <header class="topnav nav-light"> 
       <div class="logo">VOLCANO</div>
       <nav>
         <a href="#hero">Home</a>
@@ -38,65 +33,114 @@
         <a href="#panel3">Galerie</a>
         <a href="#hpanel1">Horizontal</a>
       </nav>
-      <button class="btn">Kontakt</button>
+      <button class="btn btn-primary">Kontakt</button>
     </header>
 
-    <!-- HERO -->
     <header class="hero" id="hero">
       <div class="hero__bg"></div>
       <div class="hero__tint"></div>
 
       <div class="vcontainer">
-        <div class="v-base"></div>
+        <div class="shake-layer"> 
+          <div class="v-base"></div>
+        </div>
         <div class="layer lava"></div>
       </div>
 
       <div class="hero__content">
         <div class="kicker">VOLCANO EXPERIENCE</div>
-        <h1>When the mountain wakes — Scroll to erupt</h1>
-        <p class="lead">Beim Scrollen steigen Lava, Rauch und Asche auf. GSAP & ScrollTrigger animieren linear.</p>
+        <h1>Wenn der Berg erwacht — Scroll für die Eruption</h1>
+        <p class="lead">Erleben Sie die Wucht eines Vulkanausbruchs. GSAP & ScrollTrigger synchronisieren die Lava, den Rauch und die Asche mit Ihrer Scroll-Bewegung.</p>
       </div>
     </header>
 
-    <!-- PANELS -->
     <section class="panel alt" id="panel1">
-      <div class="inner">
-        <h2>Was passiert bei einem Vulkanausbruch?</h2>
-        <p>Druckaufbau, Gasfreisetzung und Frakturen führen zu explosiven oder effusiven Ausbrüchen.</p>
-      </div>
+        <div class="inner">
+            <div class="kicker">Geologische Grundlagen</div>
+            <h2>Was ist ein Vulkan und wie entsteht er?</h2>
+            <p class="panel-intro">Ein Vulkan ist eine Öffnung in der Erdkruste, durch die Magma, Asche und Gase aus dem Erdinneren an die Oberfläche gelangen können. Vulkane entstehen meist an den **Plattengrenzen** der Erde, wo tektonische Platten auseinanderdriften (divergieren), aufeinandertreffen (konvergieren) oder über Hotspots.</p>
+            
+            <div class="feature-grid">
+              <div class="feature-item">
+                <h3>Divergierende Platten</h3>
+                <p>Auseinanderdriften der Platten (z.B. Mittelozeanischer Rücken). Das vermindert den Druck, und Magma steigt auf.</p>
+              </div>
+              <div class="feature-item">
+                <h3>Konvergierende Platten</h3>
+                <p>Eine Platte taucht unter die andere (Subduktion). Das Wasser in der abtauchenden Platte senkt den Schmelzpunkt des darüberliegenden Mantels, und Magma entsteht.</p>
+              </div>
+              <div class="feature-item">
+                <h3>Hotspots</h3>
+                <p>Stationäre Magmasäulen im Erdmantel, die durch die Kruste brechen (z.B. Hawaii). Die Kruste bewegt sich über den Hotspot, was Inselketten bildet.</p>
+              </div>
+            </div>
+        </div>
     </section>
 
     <section class="panel" id="panel2">
-      <div class="inner">
-        <h2>Animationstechniken</h2>
-        <p>Layering, Pinning, Timeline-Scrubbing und Easing vermitteln Physikgefühl.</p>
-      </div>
+        <div class="inner">
+            <h2>Vier Vulkantypen</h2>
+            <p>Vulkane unterscheiden sich stark in ihrer Form, was auf die Zusammensetzung des ausgestoßenen Magmas zurückzuführen ist.</p>
+            <div class="vulkantypen">
+                <a href="#" class="typ typ-shield">🛡️ Schildvulkane</a>
+                <a href="#" class="typ typ-strato">🏔️ Schicht-/Stratovulkane</a>
+                <a href="#" class="typ typ-cinder">💥 Schlackenkegel</a>
+                <a href="#" class="typ typ-caldera">🌋 Caldera</a>
+            </div>
+        </div>
     </section>
 
     <section class="panel alt" id="panel3">
-      <div class="inner">
-        <h2>Galerie</h2>
-        <p>Historische Bilder mit Parallaxeffekten und Übergängen.</p>
-      </div>
+        <div class="inner">
+            <h2>Galerie: Vulkane weltweit</h2>
+            <p>Eine visuelle Reise zu einigen der bekanntesten und aktivsten Vulkane unseres Planeten.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-name="Ätna, Italien"></div>
+                <div class="gallery-item" data-name="Mount Fuji, Japan"></div>
+                <div class="gallery-item" data-name="Kilauea, Hawaii"></div>
+                <div class="gallery-item" data-name="Vesuv, Italien"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- HORIZONTAL -->
     <section class="panel horizontal" id="hpanel1">
       <div class="inner-wrapper">
-        <div class="inner-slide">Erste Szene</div>
-        <div class="inner-slide">Zweite Szene</div>
-        <div class="inner-slide">Dritte Szene</div>
+        
+        <div class="inner-slide slide-1">
+          <div class="slide-content">
+            <div class="kicker">Phase 1: Druckaufbau</div>
+            <h3>Die Magmakammer</h3>
+            <p>Hier sammelt sich geschmolzenes Gestein, das Magma. Druck und Temperatur steigen extrem an. Die Gase beginnen, sich auszudehnen. Dies führt zu **Bodenhebungen** und seismischer Aktivität.</p>
+          </div>
+          <div class="h-img h-img-1"></div>
+        </div>
+
+        <div class="inner-slide slide-2">
+          <div class="slide-content">
+            <div class="kicker">Phase 2: Höchste Spannung</div>
+            <h3>Der Ausbruch</h3>
+            <p>Wenn der Druck zu hoch wird, bricht das Magma durch den Schlot an die Oberfläche. Es kommt zur Eruption – entweder explosiv (Asche, Gase) oder effusiv (Lavafluss).</p>
+          </div>
+          <div class="h-img h-img-2"></div>
+        </div>
+
+        <div class="inner-slide slide-3">
+          <div class="slide-content">
+            <div class="kicker">Phase 3: Nachwirkungen</div>
+            <h3>Gefahren & Folgen</h3>
+            <p>Neben Lavaströmen sind **pyroklastische Ströme**, Aschewolken und Lahare (Schlammlawinen) die größten Gefahren. Die Ausbrüche können das Klima global beeinflussen.</p>
+          </div>
+          <div class="h-img h-img-3"></div>
+        </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>Demo — Eigenständige Umsetzung. Assets durch eigene ersetzen.</footer>
+    <footer>Demo — Visuelle Optimierung durch Gemini.</footer>
 
   </div>
 
 
-
-  <script src="main.js"></script>
 </body>
 
 </html>
