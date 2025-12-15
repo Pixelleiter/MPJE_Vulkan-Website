@@ -144,22 +144,6 @@ header.hero {
   z-index: 5;
 }
 
-.smoke {
-  width: 95vw;
-  height: 70vh;
-  bottom: 18vh;
-  background: rgba(255,255,255,0.05);
-  opacity: 0;
-}
-
-.ash {
-  width: 90vw;
-  height: 20vh;
-  bottom: 20vh;
-  background: rgba(200,200,200,0.06);
-  opacity: 0;
-}
-
 /* --- Hero Text --- */
 .hero__content {
   position: relative;
@@ -204,32 +188,32 @@ p.lead {
   top: 0;
   left: 0;
   background: rgba(33, 31, 30, 0);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   z-index: 9999;
 }
 
 .topnav .logo {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #2a2a2a;
+  color: #ffffff;
   letter-spacing: .5px;
 }
 
 .topnav nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #2a2a2a;
+  color: #ffffff;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .topnav nav a:hover {
-  color: #6b8e4e;
+  color: #bfbfbf;
 }
 
 .topnav .btn {
   background:#2a2a2a;
-  color:white;
+  color:rgb(255, 255, 255);
   padding:0.6rem 1.2rem;
   border-radius:9999px;
   border:none;
@@ -238,7 +222,7 @@ p.lead {
 }
 
 .topnav .btn:hover {
-  background:#6b8e4e;
+  background:#bfbfbf;
 }
 
 /* --- Mobile --- */

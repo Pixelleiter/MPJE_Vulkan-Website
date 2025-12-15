@@ -54,32 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reduceMotion) return;
 
   /* HERO TIMELINE */
-  const heroTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "top top",
-      end: "+=1400",
-      scrub: 0.8,
-      pin: true
-    }
-  });
+const heroTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "top top",
+    end: "+=1400",
+    scrub: 0.8,
+    pin: true
+  }
+});
 
-  heroTl
-    .to(".hero__bg", { scale: 1.18, duration: 1.6 }, 0)
-    .to(".hero__tint", { opacity: 0.7, duration: 1.4 }, 0.2)
-    .fromTo(".lava", { scaleY: 0.03, opacity: 0 },
-      { scaleY: 1.1, opacity: 1, y: "-18vh", duration: 1.2 }, 0.25)
-    .fromTo(".smoke", { opacity: 0, scale: 0.98 },
-      { opacity: 1, y: "-26vh", scale: 1.06, duration: 1.8 }, 0.5)
-    .fromTo(".ash", { opacity: 0, y: 0 },
-      { opacity: 1, y: "-6vh", duration: 1.1 }, 0.45)
-    .to(".hero__content", { y: -48, duration: 1.2 }, 0.15)
-    .to(".v-base", { x: 4, yoyo: true, repeat: 6, duration: 0.08 }, 0.9)
-    .to("body", { background: "#120202", duration: 1.6 }, 0.6);
+heroTl
+  .to(".hero__bg", { scale: 1.18, duration: 1.6 }, 0)
+  .to(".hero__tint", { opacity: 0.7, duration: 1.4 }, 0.2)
+  .fromTo(".lava", { scaleY: 0.03, opacity: 0 },
+    { scaleY: 1.1, opacity: 1, y: "-18vh", duration: 1.2 }, 0.25)
+  .to(".hero__content", { y: -48, duration: 1.2 }, 0.15)
+  .to(".v-base", { x: 4, yoyo: true, repeat: 6, duration: 0.08 }, 0.9)
+  .to("body", { background: "#120202", duration: 1.6 }, 0.6);
 
-  /* LOOP ANIMATION */
-  gsap.to(".smoke", { x: 40, duration: 8, yoyo: true, repeat: -1 });
-  gsap.to(".lava", { rotation: 3, duration: 4, yoyo: true, repeat: -1 });
+/* LOOP ANIMATION */
+gsap.to(".lava", { rotation: 3, duration: 4, yoyo: true, repeat: -1 });
 
   /* PANEL FADE-INS */
   gsap.utils.toArray("section.panel").forEach(panel => {
