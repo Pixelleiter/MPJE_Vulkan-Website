@@ -213,7 +213,7 @@ header.hero {
   background-image: url('assets/VulkanAnimation.png'); 
   background-size: cover;
   background-position: center bottom;
-  z-index: 6;
+  z-index: 5;
   filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6));
 }
 
@@ -222,20 +222,20 @@ header.hero {
   left: 50%;
   transform: translateX(-50%);
   bottom: 33.5vh;
-  z-index: 6;
+  z-index: 5;
   will-change: transform, opacity;
 }
 
 .lava {
   width: 30vw;
   height: 40vh;
-  left: 48.5%;
+  left: 48%;
   background-image: url('assets/Flamme.png');
   background-size: cover;
   background-position: center bottom;
   opacity: 0;
   transform-origin: bottom center;
-  z-index: 5;
+  z-index: 4;
   filter: drop-shadow(0 0 15px var(--color-primary)) drop-shadow(0 0 30px rgba(255, 92, 0, 0.8));
 }
 
