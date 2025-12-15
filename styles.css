@@ -215,7 +215,7 @@ header.hero {
   position: absolute;
   left: 43%;
   transform: translateX(-50%);
-  bottom: -30px;
+  bottom: -40px;
   width: 70vw;
   max-width: 900px;
   height: 70vh;
@@ -239,7 +239,7 @@ header.hero {
   width: 30vw;
   height: 35vh;
   left: 48%;
-  bottom: 22vh;
+  bottom: 20%;
   background-image: url('assets/Flamme.png');
   background-size: cover;
   background-position: center bottom;
