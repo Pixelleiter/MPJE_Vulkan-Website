@@ -173,7 +173,29 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+  gsap.fromTo(
+  "#panel3 .gallery-item",
+  {
+    y: 60,
+    opacity: 0,
+    scale: 0.96
+  },
+  {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    duration: 1.1,
     ease: "power3.out",
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: "#panel3",
+      start: "top 75%",
+      end: "bottom 60%",
+      toggleActions: "play reverse play reverse"
+    }
+  }
+);
+
 
   /* --------------------------------------------------
      GALERIE PARALLAX
