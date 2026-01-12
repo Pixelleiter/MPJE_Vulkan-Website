@@ -401,8 +401,8 @@ section.panel.alt {
    GALERIE (PANEL 3)
 ========================================================= */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  left: 50%;
   gap: 30px;
   margin-top: 50px;
 }

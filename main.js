@@ -8,6 +8,8 @@
   ];
 
   const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
   const bar = preloader.querySelector('.bar i');
   let loaded = 0;
 
@@ -25,7 +27,9 @@
     img.onload = img.onerror = () => {
       loaded++;
       bar.style.width = `${(loaded / assets.length) * 100}%`;
-      if (loaded === assets.length) setTimeout(finish, 350);
+      if (loaded === assets.length) {
+        setTimeout(finish, 350);
+      }
     };
   });
 })();
@@ -35,13 +39,15 @@
 -------------------------------------------------- */
 const cursor = document.getElementById('cursor');
 
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
+if (cursor) {
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
 
-document.addEventListener('mousedown', () => cursor.classList.add('big'));
-document.addEventListener('mouseup', () => cursor.classList.remove('big'));
+  document.addEventListener('mousedown', () => cursor.classList.add('big'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('big'));
+}
 
 /* --------------------------------------------------
    GSAP SCROLL ANIMATIONS
@@ -55,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
 
-  /* HERO TIMELINE */
+  /* --------------------------------------------------
+     HERO TIMELINE
+  -------------------------------------------------- */
   const heroTl = gsap.timeline({
     scrollTrigger: {
       trigger: "#hero",
@@ -67,17 +75,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   heroTl
-    .to(".hero__bg", { scale: 1.15, duration: 2.2 }, 0)
+    .to(".hero__bg", {
+      scale: 1.15,
+      duration: 2.2
+    }, 0)
+
     .to(".hero__tint", {
       opacity: 1,
-      background: 'linear-gradient(180deg, rgba(15,5,2,0.5), rgba(0,0,0,0.9))',
+      background: "linear-gradient(180deg, rgba(15,5,2,0.5), rgba(0,0,0,0.9))",
       duration: 1.8
     }, 0.1)
+
     .fromTo(".lava",
-      { scaleY: 0, opacity: 0.1, y: "0vh" },
-      { scaleY: 1.2, opacity: 1, y: "-22vh", duration: 1.6, ease: "power2.out" },
+      {
+        scaleY: 0,
+        opacity: 0.1,
+        y: "0vh"
+      },
+      {
+        scaleY: 1.2,
+        opacity: 1,
+        y: "-22vh",
+        duration: 1.6,
+        ease: "power2.out"
+      },
       0.8
     )
+
     .to(".shake-layer", {
       x: 6,
       y: 6,
@@ -86,17 +110,37 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 0.06,
       ease: "steps(1)"
     }, 1.6)
-    .to(".hero__content", { y: -60, opacity: 0, duration: 1 }, 1.2)
-    .to("body", { background: "#120202", duration: 1.8 }, 1.4)
+
+    .to(".hero__content", {
+      y: -60,
+      opacity: 0,
+      duration: 1
+    }, 1.2)
+
+    .to("body", {
+      background: "#120202",
+      duration: 1.8
+    }, 1.4)
+
     .to(".topnav", {
-      background: 'rgba(0,0,0,0.9)',
-      backdropFilter: 'blur(10px)',
+      background: "rgba(0,0,0,0.9)",
+      backdropFilter: "blur(10px)",
       duration: 0.6
     }, 1.4);
 
-  gsap.to(".lava", { rotation: 3, duration: 4, yoyo: true, repeat: -1 });
+  /* --------------------------------------------------
+     LAVA LOOP
+  -------------------------------------------------- */
+  gsap.to(".lava", {
+    rotation: 3,
+    duration: 4,
+    yoyo: true,
+    repeat: -1
+  });
 
-  /* PANEL FADE-INS */
+  /* --------------------------------------------------
+     PANEL FADE-INS
+  -------------------------------------------------- */
   gsap.utils.toArray("section.panel").forEach(panel => {
 
     const inner = panel.querySelector(".inner");
@@ -128,10 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: "back.out(1.2)"
       });
     }
-
   });
 
-  /* GALERIE PARALLAX */
+  /* --------------------------------------------------
+     GALERIE PARALLAX
+  -------------------------------------------------- */
   gsap.utils.toArray(".gallery-item").forEach(item => {
     gsap.fromTo(item,
       { backgroundPositionY: "-8%" },
@@ -148,10 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   });
 
-  /* HORIZONTAL SCROLL */
+  /* --------------------------------------------------
+     HORIZONTAL SCROLL
+  -------------------------------------------------- */
   const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+
   if (wrapper) {
-    const slides = wrapper.querySelectorAll('.inner-slide').length;
+    const slides = wrapper.querySelectorAll(".inner-slide").length;
 
     gsap.to(wrapper, {
       xPercent: -100 * (slides - 1),
