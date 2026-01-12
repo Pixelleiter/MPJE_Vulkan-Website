@@ -1,101 +1,154 @@
 <!doctype html>
 <html lang="de">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Volcano — GSAP Scroll Experience (Vertikal + Horizontal)</title>
 
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-<link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Volcano — GSAP Scroll Experience</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <script src="main.js" defer></script>
 </head>
+
 <body>
 
+HEAD
 <!-- Hola Marc-->
 
 
   <!-- Preloader -->
   <div id="preloader" aria-hidden="false">
+
+  <div id="preloader">
+ 43aa1e755cb74eca68f69ec1874055276c0775d6
     Lade Szene...
     <div class="bar"><i></i></div>
   </div>
 
+  <div class="cursor" id="cursor"></div>
 
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="site">
 
-  <div class="site" id="site">
+    <header class="topnav nav-light"> 
+      <div class="logo">VOLCANO</div>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#panel1">Info</a>
+        <a href="#panel3">Galerie</a>
+        <a href="#hpanel1">Horizontal</a>
+      </nav>
+      <button class="btn btn-primary">Kontakt</button>
+    </header>
 
-    <!-- HERO Vulkan (vertikal) -->
     <header class="hero" id="hero">
-      <div class="hero__bg" id="heroBg" aria-hidden="true"></div>
-      <div class="hero__tint" id="heroTint" aria-hidden="true"></div>
+      <div class="hero__bg"></div>
+      <div class="hero__tint"></div>
 
-      <div class="vcontainer" aria-hidden="true">
-        <div class="v-base" id="vbase" role="img" aria-label="Vulkan"></div>
-        <div class="layer lava" id="lava" aria-hidden="true"></div>
-        <div class="layer smoke" id="smoke" aria-hidden="true"></div>
-        <div class="layer ash" id="ash" aria-hidden="true"></div>
-      </div>
+   <div class="vcontainer">
+  <div class="shake-layer"> 
+    <div class="layer lava"></div>     
+    <div class="v-base"></div>       
+  </div>
+</div>
 
       <div class="hero__content">
         <div class="kicker">VOLCANO EXPERIENCE</div>
-        <h1 id="title">When the mountain wakes — Scroll to erupt</h1>
-        <p class="lead">Beim Scrollen steigt Lava, Rauch und Asche auf. GSAP & ScrollTrigger animieren linear.</p>
+        <h1>Wenn der Berg erwacht — Scroll für die Eruption</h1>
+        <p class="lead">Erleben Sie die Wucht eines Vulkanausbruchs. GSAP & ScrollTrigger synchronisieren die Lava, den Rauch und die Asche mit Ihrer Scroll-Bewegung.</p>
       </div>
     </header>
 
-    <!-- Vertikale Info-Panels -->
     <section class="panel alt" id="panel1">
-      <div class="inner">
-        <h2>Was passiert bei einem Vulkanausbruch?</h2>
-        <p>Druckaufbau, Gasfreisetzung und Frakturen führen zu explosiven oder effusiven Ausbrüchen.</p>
-      </div>
+        <div class="inner">
+            <div class="kicker">Geologische Grundlagen</div>
+            <h2>Was ist ein Vulkan und wie entsteht er?</h2>
+            <p class="panel-intro">Ein Vulkan ist eine Öffnung in der Erdkruste, durch die Magma, Asche und Gase aus dem Erdinneren an die Oberfläche gelangen können. Vulkane entstehen meist an den **Plattengrenzen** der Erde, wo tektonische Platten auseinanderdriften (divergieren), aufeinandertreffen (konvergieren) oder über Hotspots.</p>
+            
+            <div class="feature-grid">
+              <div class="feature-item">
+                <h3>Divergierende Platten</h3>
+                <p>Auseinanderdriften der Platten (z.B. Mittelozeanischer Rücken). Das vermindert den Druck, und Magma steigt auf.</p>
+              </div>
+              <div class="feature-item">
+                <h3>Konvergierende Platten</h3>
+                <p>Eine Platte taucht unter die andere (Subduktion). Das Wasser in der abtauchenden Platte senkt den Schmelzpunkt des darüberliegenden Mantels, und Magma entsteht.</p>
+              </div>
+              <div class="feature-item">
+                <h3>Hotspots</h3>
+                <p>Stationäre Magmasäulen im Erdmantel, die durch die Kruste brechen (z.B. Hawaii). Die Kruste bewegt sich über den Hotspot, was Inselketten bildet.</p>
+              </div>
+            </div>
+        </div>
     </section>
 
     <section class="panel" id="panel2">
-      <div class="inner">
-        <h2>Animationstechniken</h2>
-        <p>Layering, Pinning, Timeline-Scrubbing und easing Kurven schaffen Gewicht & Physikgefühl.</p>
-      </div>
+        <div class="inner">
+            <h2>Vier Vulkantypen</h2>
+            <p>Vulkane unterscheiden sich stark in ihrer Form, was auf die Zusammensetzung des ausgestoßenen Magmas zurückzuführen ist.</p>
+            <div class="vulkantypen">
+                <a href="#" class="typ typ-shield">🛡️ Schildvulkane</a>
+                <a href="#" class="typ typ-strato">🏔️ Schicht-/Stratovulkane</a>
+                <a href="#" class="typ typ-cinder">💥 Schlackenkegel</a>
+                <a href="#" class="typ typ-caldera">🌋 Caldera</a>
+            </div>
+        </div>
     </section>
 
     <section class="panel alt" id="panel3">
-      <div class="inner">
-        <h2>Galerie</h2>
-        <p>Historische Bilder mit Parallaxeffekten und weichen Übergängen.</p>
-      </div>
+        <div class="inner">
+            <h2>Galerie: Vulkane weltweit</h2>
+            <p>Eine visuelle Reise zu einigen der bekanntesten und aktivsten Vulkane unseres Planeten.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-name="Ätna, Italien"><img src="assets/Aetna.webp" alt="" height="100%"></div>
+                <div class="gallery-item" data-name="Mount Fuji, Japan"><img src="assets/Mt-Fuji-from-Kawaguchiko.webp" alt="" height="100%"></div>
+                <div class="gallery-item" data-name="Kilauea, Hawaii"><img src="assets/kilaua.jpg" alt="" height="100%"></div>
+                <div class="gallery-item" data-name="Vesuv, Italien"><img src="assets/vesuv.jpeg" alt="" height="100%"></div>
+            </div>
+        </div>
     </section>
 
-    <!-- Horizontale Scroll-Sektion -->
     <section class="panel horizontal" id="hpanel1">
       <div class="inner-wrapper">
-        <div class="inner-slide" style="background:#1a1a1a;">Erste Szene</div>
-        <div class="inner-slide" style="background:#2b2b2b;">Zweite Szene</div>
-        <div class="inner-slide" style="background:#3c3c3c;">Dritte Szene</div>
+        
+        <div class="inner-slide slide-1">
+          <div class="slide-content">
+            <div class="kicker">Phase 1: Druckaufbau</div>
+            <h3>Die Magmakammer</h3>
+            <p>Hier sammelt sich geschmolzenes Gestein, das Magma. Druck und Temperatur steigen extrem an. Die Gase beginnen, sich auszudehnen. Dies führt zu **Bodenhebungen** und seismischer Aktivität.</p>
+          </div>
+          <div class="h-img h-img-1"></div>
+        </div>
+
+        <div class="inner-slide slide-2">
+          <div class="slide-content">
+            <div class="kicker">Phase 2: Höchste Spannung</div>
+            <h3>Der Ausbruch</h3>
+            <p>Wenn der Druck zu hoch wird, bricht das Magma durch den Schlot an die Oberfläche. Es kommt zur Eruption – entweder explosiv (Asche, Gase) oder effusiv (Lavafluss).</p>
+          </div>
+          <div class="h-img h-img-2"></div>
+        </div>
+
+        <div class="inner-slide slide-3">
+          <div class="slide-content">
+            <div class="kicker">Phase 3: Nachwirkungen</div>
+            <h3>Gefahren & Folgen</h3>
+            <p>Neben Lavaströmen sind **pyroklastische Ströme**, Aschewolken und Lahare (Schlammlawinen) die größten Gefahren. Die Ausbrüche können das Klima global beeinflussen.</p>
+          </div>
+          <div class="h-img h-img-3"></div>
+        </div>
       </div>
     </section>
 
-    <footer>
-      Demo — inspiriert, aber eigenständig • Alle Platzhalter-Assets durch eigene ersetzen.
-    </footer>
+    <footer>Demo — Visuelle Optimierung durch Gemini.</footer>
 
   </div>
 
-  <!-- Audio Player -->
-  <div class="player" role="region" aria-label="Audio Player">
-    <button class="btn" id="playBtn" aria-pressed="false">▶</button>
-    <div class="meta">
-      <div style="font-weight:700">Ambient Volcano</div>
-      <div style="font-size:12px;opacity:.8">Klicke Play zum Hören</div>
-    </div>
-    <audio id="bgAudio" preload="none">
-      <source src="https://cdn.pixabay.com/download/audio/2021/10/26/audio_5d49d8d7a0.mp3?filename=ambient-11229.mp3" type="audio/mpeg">
-      Dein Browser unterstützt kein Audio.
-    </audio>
-  </div>
 
-<script src="main.js"></script>
 </body>
+
 </html>
