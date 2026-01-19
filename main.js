@@ -229,7 +229,7 @@ if (carousel) {
   let isDragging = false;
   let startX = 0;
 
-  const radius = 320;
+  const radius = 280;
   const speed = 0.02;
 
   function updateCarousel() {
