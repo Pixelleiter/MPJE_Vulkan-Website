@@ -195,48 +195,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 );
+// --------------------------------------------------
+// HOVER EFFECT FOR GALLERY ITEMS
+// --------------------------------------------------
+gsap.utils.toArray("#panel3 .gallery-item").forEach(item => {
 
-
-  /* --------------------------------------------------
-     GALERIE PARALLAX
-  -------------------------------------------------- */
-  gsap.utils.toArray(".gallery-item").forEach(item => {
-    gsap.fromTo(item,
-      { backgroundPositionY: "-8%" },
-      {
-        backgroundPositionY: "8%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: item,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.4
-        }
-      }
-    );
+  item.addEventListener("mouseenter", () => {
+    gsap.to(item, {
+      y: -8,
+      duration: 0.35,
+      ease: "power2.out"
+    });
   });
 
-  /* --------------------------------------------------
-     HORIZONTAL SCROLL
-  -------------------------------------------------- */
-  const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+  item.addEventListener("mouseleave", () => {
+    gsap.to(item, {
+      y: 0,
+      duration: 0.35,
+      ease: "power2.out"
+    });
+  });
 
-  if (wrapper) {
-    const slides = wrapper.querySelectorAll(".inner-slide").length;
+});
 
-    gsap.to(wrapper, {
-      xPercent: -100 * (slides - 1),
+
+/* --------------------------------------------------
+   GALERIE PARALLAX
+-------------------------------------------------- */
+gsap.utils.toArray(".gallery-item").forEach(item => {
+  gsap.fromTo(
+    item,
+    { backgroundPositionY: "-8%" },
+    {
+      backgroundPositionY: "8%",
       ease: "none",
       scrollTrigger: {
-        trigger: ".panel.horizontal",
-        start: "top top",
-        end: () => `+=${(slides - 1) * window.innerWidth}`,
-        scrub: true,
-        pin: true
+        trigger: item,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.4
       }
-    });
-  }
+    }
+  );
 });
+
+
+/* --------------------------------------------------
+   HORIZONTAL SCROLL
+-------------------------------------------------- */
+const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+
+if (wrapper) {
+  const slides = wrapper.querySelectorAll(".inner-slide").length;
+
+  gsap.to(wrapper, {
+    xPercent: -100 * (slides - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".panel.horizontal",
+      start: "top top",
+      end: () => `+=${(slides - 1) * window.innerWidth}`,
+      scrub: true,
+      pin: true
+    }
+  });
+}
+
 
 /* --------------------------------------------------
    PANEL 2 – 3D CAROUSEL
@@ -245,6 +269,12 @@ const carousel = document.getElementById("carousel");
 
 if (carousel) {
   const items = carousel.querySelectorAll(".item");
+
+  // 🔒 Native Drag & Drop deaktivieren
+  items.forEach(item => {
+    item.setAttribute("draggable", "false");
+  });
+
   const total = items.length;
 
   let rotation = 0;
@@ -300,12 +330,21 @@ if (carousel) {
     isDragging = false;
   });
 
-  carousel.addEventListener("touchmove", e => {
-    rotation += (e.touches[0].clientX - startX) * 0.3;
-    startX = e.touches[0].clientX;
-    updateCarousel();
-  });
+  // 📱 Touch stabil + kein Page-Scroll / Ghost-Drag
+  carousel.addEventListener(
+    "touchmove",
+    e => {
+      e.preventDefault();
+      rotation += (e.touches[0].clientX - startX) * 0.3;
+      startX = e.touches[0].clientX;
+      updateCarousel();
+    },
+    { passive: false }
+  );
+  
 
   updateCarousel();
   animate();
 }
+
+});

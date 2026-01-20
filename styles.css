@@ -397,6 +397,20 @@ section.panel.alt {
   opacity: 0;
   pointer-events: none;
 }
+#carousel,
+#carousel * {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+#carousel {
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+#carousel:active {
+  cursor: grabbing;
+}
 /* =========================================================
    GALERIE (PANEL 3)
 ========================================================= */
