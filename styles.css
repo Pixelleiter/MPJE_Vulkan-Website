@@ -320,12 +320,12 @@ section.panel.alt {
 
 /* --- Panel 1: Feature Grid --- */
 .feature-grid {
-  display: flex;
+  display: flex;          /* DAS ist die entscheidende Zeile */
   justify-content: center;
   gap: 25px;
   margin-top: 50px;
-  flex-wrap: wrap;
 }
+
 
 .feature-item {
   flex: 0 0 300px;
