@@ -241,26 +241,32 @@ gsap.utils.toArray(".gallery-item").forEach(item => {
 
 
 /* --------------------------------------------------
-   HORIZONTAL SCROLL
+   HORIZONTAL SCROLL (CENTERED SLIDES)
 -------------------------------------------------- */
 const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
 
 if (wrapper) {
   const slides = wrapper.querySelectorAll(".inner-slide").length;
 
-  gsap.to(wrapper, {
-    xPercent: -100 * (slides - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".panel.horizontal",
-      start: "top top",
-      end: () => `+=${(slides - 1) * window.innerWidth}`,
-      scrub: true,
-      pin: true
-    }
-  });
-}
+  const slideWidth = 0.85;              // must match CSS (flex-basis: 85%)
+  const offset = (1 - slideWidth) * 50; // center first & last slide
 
+  gsap.fromTo(
+    wrapper,
+    { xPercent: offset },
+    {
+      xPercent: -100 * (slides - 1) - offset,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".panel.horizontal",
+        start: "top top",
+        end: () => `+=${(slides - 1) * window.innerWidth}`,
+        scrub: true,
+        pin: true
+      }
+    }
+  );
+}
 
 /* --------------------------------------------------
    PANEL 2 – 3D CAROUSEL
