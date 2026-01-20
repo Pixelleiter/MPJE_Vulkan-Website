@@ -464,6 +464,25 @@ section.panel.alt {
 /* =========================================================
    HORIZONTAL PANELS
 ========================================================= */
+/* Alle Carousel-Items gleich groß */
+.carousel .item {
+  width: 250px;      /* gewünschte Breite des Divs */
+  height: 250px;     /* gewünschte Höhe des Divs */
+  overflow: hidden;  /* damit nichts herausragt */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc; /* optional, nur zur Visualisierung */
+  border-radius: 12px;    /* optional, schöner Look */
+}
+
+/* Bilder anpassen */
+.carousel .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* skaliert das Bild, füllt das Div komplett */
+}
+
 .panel.horizontal {
   position: relative;
   height: 100vh;
