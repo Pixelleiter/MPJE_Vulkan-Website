@@ -2,633 +2,633 @@
    VARIABLEN & RESET
 ========================================================= */
 :root {
-  /* Farbpalette */
-  --color-dark-bg: #0A0604;
-  /* Tiefes Schwarz-Braun (Basalt) */
-  --color-panel-bg: #140C0A;
-  /* Warme, dunkle Sektion */
-  --color-card-bg: #1D1412;
-  /* Karten/Element-Hintergrund */
-  --color-primary: #FF5C00;
-  /* Glühendes Orange (Lava) */
-  --color-secondary: #FFC000;
-  /* Helles Orange-Gelb */
-  --color-text-light: #F0EFEF;
-  --color-text-fade: #A09895;
-
-  /* Typografie */
-  --font-heading: 'Inter', system-ui;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  font-family: var(--font-heading);
-  /* --- TEXTURIERTER HINTERGRUND --- */
-  background-color: var(--color-dark-bg);
-  /* Textur aus einem subtilen Gradienten für das Gefühl von Asche/Basalt */
-  background-image: radial-gradient(circle at center, rgba(30, 15, 10, 0.1), var(--color-dark-bg) 80%);
-  background-attachment: fixed;
-  /* Lässt die Textur beim Scrollen fixiert erscheinen */
-  /* --- ENDE TEXTURIERTER HINTERGRUND --- */
-  color: var(--color-text-light);
-  overflow-x: hidden;
-  transition: background-color 0.8s ease;
-}
-
-/* =========================================================
-   PRELOADER
-========================================================= */
-#preloader {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: var(--color-dark-bg);
-  z-index: 1000;
-}
-
-#preloader .bar {
-  width: 320px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  margin-top: 14px;
-  overflow: hidden;
-}
-
-#preloader .bar>i {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
-  border-radius: 6px;
-}
-
-/* =========================================================
-   CURSOR
-========================================================= */
-.cursor {
-  pointer-events: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  transition: transform 0.12s ease;
-}
-
-.cursor.big {
-  width: 46px;
-  height: 46px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* =========================================================
-   TOP NAVIGATION
-========================================================= */
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 4rem;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  /* Anpassung für ruhigeren Start */
-  background: rgba(10, 6, 4, 0.4);
-  backdrop-filter: blur(5px);
-  z-index: 9999;
-  transition: background 0.4s ease;
-}
-
-.topnav .logo {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--color-text-light);
-  letter-spacing: 1px;
-}
-
-.topnav nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: var(--color-text-light);
-  opacity: 0.8;
-  font-weight: 500;
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-.topnav nav a:hover {
-  color: var(--color-primary);
-  opacity: 1;
-}
-
-.topnav .btn {
-  background: var(--color-primary);
-  color: var(--color-dark-bg);
-  padding: 0.7rem 1.6rem;
-  border-radius: 9999px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .3s ease;
-}
-
-.topnav .btn:hover {
-  background: var(--color-secondary);
-}
-
-@media(max-width:800px) {
-  .topnav {
-    padding: 1rem 1.5rem;
+    /* Farbpalette */
+    --color-dark-bg: #0A0604;
+    /* Tiefes Schwarz-Braun (Basalt) */
+    --color-panel-bg: #140C0A;
+    /* Warme, dunkle Sektion */
+    --color-card-bg: #1D1412;
+    /* Karten/Element-Hintergrund */
+    --color-primary: #FF5C00;
+    /* Glühendes Orange (Lava) */
+    --color-secondary: #FFC000;
+    /* Helles Orange-Gelb */
+    --color-text-light: #F0EFEF;
+    --color-text-fade: #A09895;
+  
+    /* Typografie */
+    --font-heading: 'Inter', system-ui;
   }
-
-  .topnav nav a {
-    margin: 0 0.6rem;
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-}
-
-/* =========================================================
-   HERO (VOLCANO)
-========================================================= */
-header.hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* --- Hero BG + Tint --- */
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=2400');
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.00);
-  /* Anpassung für ruhigeren Start */
-}
-
-.hero__tint {
-  position: absolute;
-  inset: 0;
-  /* Anpassung für ruhigeren, helleren Start */
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(15, 5, 2, 0.6));
-  mix-blend-mode: multiply;
-  opacity: 1;
-}
-
-/* --- Vulkan Layers --- */
-.vcontainer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.shake-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.v-base {
-  position: absolute;
-  left: 43%;
-  transform: translateX(-50%);
-  bottom: -40px;
-  width: 70vw;
-  max-width: 900px;
-  height: 70vh;
-  background-image: url('assets/VulkanAnimation.png');
-  background-size: cover;
-  background-position: center bottom;
-  z-index: 5;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.6));
-}
-
-.layer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 33.5vh;
-  z-index: 5;
-  will-change: transform, opacity;
-}
-
-.lava {
-  width: 30vw;
-  height: 35vh;
-  left: 48%;
-  bottom: 20%;
-  background-image: url('assets/Flamme.png');
-  background-size: cover;
-  background-position: center bottom;
-  opacity: 0;
-  transform-origin: bottom center;
-  z-index: 4;
-  filter: drop-shadow(0 0 15px var(--color-primary)) drop-shadow(0 0 30px rgba(255, 92, 0, 0.8));
-}
-
-/* --- Hero Text --- */
-.hero__content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding: 2rem;
-  max-width: 1200px;
-}
-
-.kicker {
-  font-size: 14px;
-  opacity: 0.7;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--color-secondary);
-}
-
-h1 {
-  font-size: clamp(34px, 7vw, 90px);
-  line-height: 0.9;
-  margin: 0.8rem 0 1rem;
-  font-weight: 900;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, .9);
-}
-
-p.lead {
-  font-size: clamp(16px, 1.8vw, 20px);
-  opacity: 0.95;
-  max-width: 840px;
-  margin: 0 auto;
-}
-
-/* =========================================================
-   VERTICAL PANELS
-========================================================= */
-section.panel {
-  min-height: 80vh;
-  padding: 10vh 6vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-section.panel.alt {
-  /* Texturierter Hintergrund für Panels */
-  background: linear-gradient(180deg, var(--color-dark-bg) 0%, #170E0B 100%);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
-}
-
-.panel .inner {
-  max-width: 1000px;
-}
-
-.panel h2 {
-  font-size: clamp(30px, 4vw, 48px);
-  margin-bottom: 20px;
-  font-weight: 800;
-  color: var(--color-text-light);
-}
-
-.panel .panel-intro {
-  max-width: 800px;
-  margin: 0 auto 40px;
-  font-size: 1.15rem;
-  opacity: 0.85;
-}
-
-/* --- Panel 1: Feature Grid --- */
-.feature-grid {
-  display: flex;          /* DAS ist die entscheidende Zeile */
-  justify-content: center;
-  gap: 25px;
-  margin-top: 50px;
-}
-
-
-.feature-item {
-  flex: 0 0 300px;
-  text-align: left;
-  padding: 30px;
-  border-radius: 16px;
-  background: var(--color-card-bg);
-  border: 1px solid rgba(255, 92, 0, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.feature-item h3 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  color: var(--color-primary);
-}
-
-.feature-item p {
-  color: var(--color-text-fade);
-  line-height: 1.5;
-}
-
-/* =========================================================
-   PANEL 2 – 3D CAROUSEL (FIX)
-========================================================= */
-
-.carousel-container {
-  perspective: 1200px;
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-}
-
-.carousel {
-  position: relative;
-  width: 320px;
-  height: 220px;
-  transform-style: preserve-3d;
-  cursor: grab;
-}
-
-.carousel:active {
-  cursor: grabbing;
-}
-
-.carousel .item {
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: white;
-  background: linear-gradient(135deg, var(--color-primary), #ff9248);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-  transition: opacity 0.4s ease;
-}
-
-.carousel .item span {
-  display: block;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  opacity: 0.85;
-}
-
-.carousel .item.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-#carousel,
-#carousel * {
-  -webkit-user-drag: none;
-  user-select: none;
-}
-
-#carousel {
-  touch-action: pan-y;
-  cursor: grab;
-}
-
-#carousel:active {
-  cursor: grabbing;
-}
-/* =========================================================
-   GALERIE (PANEL 3)
-========================================================= */
-/* =========================================================
-   GALERIE (PANEL 3)
-========================================================= */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 50px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gallery-item {
-  height: 300px;
-  background: var(--color-card-bg);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-  transform: translateY(0);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.gallery-item::after {
-  content: attr(data-name);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 15px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  color: var(--color-text-light);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.gallery-grid .gallery-item:nth-child(1) {
-  background-image: url('https://images.unsplash.com/photo-1596707323136-1e967a5b3a4c?q=80&w=600&h=600&fit=crop');
-}
-
-.gallery-grid .gallery-item:nth-child(2) {
-  background-image: url('https://images.unsplash.com/photo-1590455013083-d02f5e324c45?q=80&w=600&h=600&fit=crop');
-}
-
-.gallery-grid .gallery-item:nth-child(3) {
-  background-image: url('https://images.unsplash.com/photo-1549427357-19d9b62788e2?q=80&w=600&h=600&fit=crop');
-}
-
-.gallery-grid .gallery-item:nth-child(4) {
-  background-image: url('https://images.unsplash.com/photo-1554522436-5b7c80536417?q=80&w=600&h=600&fit=crop');
-}
-
-
-/* =========================================================
-   HORIZONTAL PANELS
-========================================================= */
-/* Alle Carousel-Items gleich groß */
-.carousel .item {
-  width: 250px;      /* gewünschte Breite des Divs */
-  height: 250px;     /* gewünschte Höhe des Divs */
-  overflow: hidden;  /* damit nichts herausragt */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ccc; /* optional, nur zur Visualisierung */
-  border-radius: 12px;    /* optional, schöner Look */
-}
-
-/* Bilder anpassen */
-.carousel .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* skaliert das Bild, füllt das Div komplett */
-}
-
-.panel.horizontal {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--color-dark-bg);
-}
-
-.panel.horizontal .inner-wrapper {
-  display: flex;
-  height: 100%;
-  width: auto;
-  padding: 0; 
-}
-
-.panel.horizontal .inner-slide {
-  flex: 0 0 85%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  gap: 40px;
-}
-
-.panel.horizontal .h-img {
-  width: 100%;
-  max-width: 900px;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.panel.horizontal .h-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.panel.horizontal .slide-content {
-  max-width: 600px;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-.panel.horizontal .slide-content h3 {
-  font-size: clamp(28px, 3.5vw, 40px);
-  margin-top: 8px;
-  font-weight: 800;
-}
-
-.panel.horizontal .h-img {
-  width: 70%;
-  max-width: 800px;
-  height: 45vh;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  box-shadow:
-    0 0 0 4px var(--color-primary),
-    0 20px 50px rgba(0, 0, 0, 0.8);
-  background-color: #333;
-}
-
-.h-img-1 {
-  background-image: url('assets/magmakammer.jpg');
-}
-
-.h-img-2 {
-  background-image: url('assets/eruption.jpg');
-}
-
-.h-img-3 {
-  background-image: url('assets/lahar.jpg');
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-  padding: 36px 18px;
-  text-align: center;
-  color: var(--color-text-fade);
-  background: var(--color-panel-bg);
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-@media (max-width:800px) {
-  .v-base {
-    width: 95vw;
-    height: 46vh;
+  
+  html,
+  body {
+    height: 100%;
   }
-
-  .lava {
-    width: 60vw;
+  
+  body {
+    font-family: var(--font-heading);
+    /* --- TEXTURIERTER HINTERGRUND --- */
+    background-color: var(--color-dark-bg);
+    /* Textur aus einem subtilen Gradienten für das Gefühl von Asche/Basalt */
+    background-image: radial-gradient(circle at center, rgba(30, 15, 10, 0.1), var(--color-dark-bg) 80%);
+    background-attachment: fixed;
+    /* Lässt die Textur beim Scrollen fixiert erscheinen */
+    /* --- ENDE TEXTURIERTER HINTERGRUND --- */
+    color: var(--color-text-light);
+    overflow-x: hidden;
+    transition: background-color 0.8s ease;
   }
-
-  .smoke {
-    width: 95vw;
-    height: 70vh;
-    bottom: 18vh;
-  }
-
-  .ash {
-    width: 90vw;
-  }
-
-  h1 {
-    font-size: clamp(26px, 10vw, 44px);
-  }
-
-  .panel.horizontal .inner-slide {
+  
+  /* =========================================================
+     PRELOADER
+  ========================================================= */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    background: var(--color-dark-bg);
+    z-index: 1000;
   }
-
-  .panel.horizontal .h-img {
-    height: 35vh;
+  
+  #preloader .bar {
+    width: 320px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    margin-top: 14px;
+    overflow: hidden;
   }
-
-  .feature-item {
-    flex: 0 0 100%;
+  
+  #preloader .bar>i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+    border-radius: 6px;
   }
-}
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-@media (prefers-reduced-motion: reduce) {
+  
+  /* =========================================================
+     CURSOR
+  ========================================================= */
   .cursor {
-    display: none;
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    transition: transform 0.12s ease;
   }
-}
+  
+  .cursor.big {
+    width: 46px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  /* =========================================================
+     TOP NAVIGATION
+  ========================================================= */
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* Anpassung für ruhigeren Start */
+    background: rgba(10, 6, 4, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    transition: background 0.4s ease;
+  }
+  
+  .topnav .logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-text-light);
+    letter-spacing: 1px;
+  }
+  
+  .topnav nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--color-text-light);
+    opacity: 0.8;
+    font-weight: 500;
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .topnav nav a:hover {
+    color: var(--color-primary);
+    opacity: 1;
+  }
+  
+  .topnav .btn {
+    background: var(--color-primary);
+    color: var(--color-dark-bg);
+    padding: 0.7rem 1.6rem;
+    border-radius: 9999px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  
+  .topnav .btn:hover {
+    background: var(--color-secondary);
+  }
+  
+  @media(max-width:800px) {
+    .topnav {
+      padding: 1rem 1.5rem;
+    }
+  
+    .topnav nav a {
+      margin: 0 0.6rem;
+    }
+  }
+  
+  /* =========================================================
+     HERO (VOLCANO)
+  ========================================================= */
+  header.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* --- Hero BG + Tint --- */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=2400');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.00);
+    /* Anpassung für ruhigeren Start */
+  }
+  
+  .hero__tint {
+    position: absolute;
+    inset: 0;
+    /* Anpassung für ruhigeren, helleren Start */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(15, 5, 2, 0.6));
+    mix-blend-mode: multiply;
+    opacity: 1;
+  }
+  
+  /* --- Vulkan Layers --- */
+  .vcontainer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  
+  .shake-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .v-base {
+    position: absolute;
+    left: 43%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    width: 70vw;
+    max-width: 900px;
+    height: 70vh;
+    background-image: url('assets/VulkanAnimation.png');
+    background-size: cover;
+    background-position: center bottom;
+    z-index: 5;
+    filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.6));
+  }
+  
+  .layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 33.5vh;
+    z-index: 5;
+    will-change: transform, opacity;
+  }
+  
+  .lava {
+    width: 30vw;
+    height: 35vh;
+    left: 48%;
+    bottom: 20%;
+    background-image: url('assets/Flamme.png');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0;
+    transform-origin: bottom center;
+    z-index: 4;
+    filter: drop-shadow(0 0 15px var(--color-primary)) drop-shadow(0 0 30px rgba(255, 92, 0, 0.8));
+  }
+  
+  /* --- Hero Text --- */
+  .hero__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+  }
+  
+  .kicker {
+    font-size: 14px;
+    opacity: 0.7;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-secondary);
+  }
+  
+  h1 {
+    font-size: clamp(34px, 7vw, 90px);
+    line-height: 0.9;
+    margin: 0.8rem 0 1rem;
+    font-weight: 900;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, .9);
+  }
+  
+  p.lead {
+    font-size: clamp(16px, 1.8vw, 20px);
+    opacity: 0.95;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  
+  /* =========================================================
+     VERTICAL PANELS
+  ========================================================= */
+  section.panel {
+    min-height: 80vh;
+    padding: 10vh 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  section.panel.alt {
+    /* Texturierter Hintergrund für Panels */
+    background: linear-gradient(180deg, var(--color-dark-bg) 0%, #170E0B 100%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
+  }
+  
+  .panel .inner {
+    max-width: 1000px;
+  }
+  
+  .panel h2 {
+    font-size: clamp(30px, 4vw, 48px);
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: var(--color-text-light);
+  }
+  
+  .panel .panel-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.15rem;
+    opacity: 0.85;
+  }
+  
+  /* --- Panel 1: Feature Grid --- */
+  .feature-grid {
+    display: flex;          /* DAS ist die entscheidende Zeile */
+    justify-content: center;
+    gap: 25px;
+    margin-top: 50px;
+  }
+  
+  
+  .feature-item {
+    flex: 0 0 300px;
+    text-align: left;
+    padding: 30px;
+    border-radius: 16px;
+    background: var(--color-card-bg);
+    border: 1px solid rgba(255, 92, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .feature-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: var(--color-primary);
+  }
+  
+  .feature-item p {
+    color: var(--color-text-fade);
+    line-height: 1.5;
+  }
+  
+  /* =========================================================
+     PANEL 2 – 3D CAROUSEL (FIX)
+  ========================================================= */
+  
+  .carousel-container {
+    perspective: 1200px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    transform-style: preserve-3d;
+    cursor: grab;
+  }
+  
+  .carousel:active {
+    cursor: grabbing;
+  }
+  
+  .carousel .item {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(135deg, var(--color-primary), #ff9248);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    transition: opacity 0.4s ease;
+  }
+  
+  .carousel .item span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+  }
+  
+  .carousel .item.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #carousel,
+  #carousel * {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  
+  #carousel {
+    touch-action: pan-y;
+    cursor: grab;
+  }
+  
+  #carousel:active {
+    cursor: grabbing;
+  }
+  /* =========================================================
+     GALERIE (PANEL 3)
+  ========================================================= */
+  /* =========================================================
+     GALERIE (PANEL 3)
+  ========================================================= */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .gallery-item {
+    height: 300px;
+    background: var(--color-card-bg);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .gallery-item::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    color: var(--color-text-light);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  
+  .gallery-grid .gallery-item:nth-child(1) {
+    background-image: url('https://images.unsplash.com/photo-1596707323136-1e967a5b3a4c?q=80&w=600&h=600&fit=crop');
+  }
+  
+  .gallery-grid .gallery-item:nth-child(2) {
+    background-image: url('https://images.unsplash.com/photo-1590455013083-d02f5e324c45?q=80&w=600&h=600&fit=crop');
+  }
+  
+  .gallery-grid .gallery-item:nth-child(3) {
+    background-image: url('https://images.unsplash.com/photo-1549427357-19d9b62788e2?q=80&w=600&h=600&fit=crop');
+  }
+  
+  .gallery-grid .gallery-item:nth-child(4) {
+    background-image: url('https://images.unsplash.com/photo-1554522436-5b7c80536417?q=80&w=600&h=600&fit=crop');
+  }
+  
+  
+  /* =========================================================
+     HORIZONTAL PANELS
+  ========================================================= */
+  /* Alle Carousel-Items gleich groß */
+  .carousel .item {
+    width: 250px;      /* gewünschte Breite des Divs */
+    height: 250px;     /* gewünschte Höhe des Divs */
+    overflow: hidden;  /* damit nichts herausragt */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc; /* optional, nur zur Visualisierung */
+    border-radius: 12px;    /* optional, schöner Look */
+  }
+  
+  /* Bilder anpassen */
+  .carousel .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* skaliert das Bild, füllt das Div komplett */
+  }
+  
+  .panel.horizontal {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--color-dark-bg);
+  }
+  
+  .panel.horizontal .inner-wrapper {
+    display: flex;
+    height: 100%;
+    width: auto;
+    padding: 0; 
+  }
+  
+  .panel.horizontal .inner-slide {
+    flex: 0 0 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 40px;
+  }
+  
+  .panel.horizontal .h-img {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  
+  .panel.horizontal .h-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .panel.horizontal .slide-content {
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .panel.horizontal .slide-content h3 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    margin-top: 8px;
+    font-weight: 800;
+  }
+  
+  .panel.horizontal .h-img {
+    width: 70%;
+    max-width: 800px;
+    height: 45vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow:
+      0 0 0 4px var(--color-primary),
+      0 20px 50px rgba(0, 0, 0, 0.8);
+    background-color: #333;
+  }
+  
+  .h-img-1 {
+    background-image: url('assets/magmakammer.jpg');
+  }
+  
+  .h-img-2 {
+    background-image: url('assets/eruption.jpg');
+  }
+  
+  .h-img-3 {
+    background-image: url('assets/lahar.jpg');
+  }
+  
+  
+  /* =========================================================
+     FOOTER
+  ========================================================= */
+  footer {
+    padding: 36px 18px;
+    text-align: center;
+    color: var(--color-text-fade);
+    background: var(--color-panel-bg);
+  }
+  
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+  @media (max-width:800px) {
+    .v-base {
+      width: 95vw;
+      height: 46vh;
+    }
+  
+    .lava {
+      width: 60vw;
+    }
+  
+    .smoke {
+      width: 95vw;
+      height: 70vh;
+      bottom: 18vh;
+    }
+  
+    .ash {
+      width: 90vw;
+    }
+  
+    h1 {
+      font-size: clamp(26px, 10vw, 44px);
+    }
+  
+    .panel.horizontal .inner-slide {
+      flex-direction: column;
+    }
+  
+    .panel.horizontal .h-img {
+      height: 35vh;
+    }
+  
+    .feature-item {
+      flex: 0 0 100%;
+    }
+  }
+  
+  /* =========================================================
+     ACCESSIBILITY
+  ========================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    .cursor {
+      display: none;
+    }
+  }
