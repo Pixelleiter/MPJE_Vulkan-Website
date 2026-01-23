@@ -243,29 +243,60 @@
   /* --------------------------------------------------
      HORIZONTAL SCROLL (CENTERED SLIDES)
   -------------------------------------------------- */
-  const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+  const panel = document.querySelector(".panel.horizontal");
+  const wrapper = panel?.querySelector(".inner-wrapper");
   
-  if (wrapper) {
-    const slides = wrapper.querySelectorAll(".inner-slide").length;
-  
-    const slideWidth = 0.85;              // must match CSS (flex-basis: 85%)
-    const offset = (1 - slideWidth) * 50; // center first & last slide
+  if (panel && wrapper) {
+    const getSlideMetrics = () => {
+      const slides = Array.from(wrapper.querySelectorAll(".inner-slide"));
+      if (!slides.length) return null;
+
+      const first = slides[0];
+      const slideWidth = first.offsetWidth;
+      const panelWidth = panel.clientWidth;
+      const sidePadding = Math.max(0, (panelWidth - slideWidth) / 2);
+
+      wrapper.style.paddingLeft = `${sidePadding}px`;
+      wrapper.style.paddingRight = `${sidePadding}px`;
+
+      const travel = Math.max(0, wrapper.scrollWidth - panelWidth);
+      const startX = 0;
+      const endX = -travel;
+
+      return { startX, endX, travel };
+    };
   
     gsap.fromTo(
       wrapper,
-      { xPercent: offset },
       {
-        xPercent: -100 * (slides - 1) - offset,
+        x: () => {
+          const metrics = getSlideMetrics();
+          return metrics ? metrics.startX : 0;
+        }
+      },
+      {
+        x: () => {
+          const metrics = getSlideMetrics();
+          return metrics ? metrics.endX : 0;
+        },
         ease: "none",
         scrollTrigger: {
           trigger: ".panel.horizontal",
           start: "top top",
-          end: () => `+=${(slides - 1) * window.innerWidth}`,
+          end: () => {
+            const metrics = getSlideMetrics();
+            return metrics ? `+=${metrics.travel}` : "+=0";
+          },
           scrub: true,
-          pin: true
+          pin: true,
+          invalidateOnRefresh: true
         }
       }
     );
+
+    window.addEventListener("load", () => {
+      ScrollTrigger.refresh();
+    });
   }
   
   /* --------------------------------------------------

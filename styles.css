@@ -502,6 +502,7 @@
     height: 100vh;
     overflow: hidden;
     background: var(--color-dark-bg);
+    padding: 0;
   }
   
   .panel.horizontal .inner-wrapper {
@@ -518,7 +519,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    gap: 40px;
+    gap: 4px;
   }
   
   .panel.horizontal .h-img {
