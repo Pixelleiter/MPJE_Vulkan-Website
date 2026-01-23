@@ -173,37 +173,89 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+  gsap.fromTo(
+  "#panel3 .gallery-item",
+  {
+    y: 60,
+    opacity: 0,
+    scale: 0.96
+  },
+  {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    duration: 1.1,
     ease: "power3.out",
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: "#panel3",
+      start: "top 75%",
+      end: "bottom 60%",
+      toggleActions: "play reverse play reverse"
+    }
+  }
+);
+// --------------------------------------------------
+// HOVER EFFECT FOR GALLERY ITEMS
+// --------------------------------------------------
+gsap.utils.toArray("#panel3 .gallery-item").forEach(item => {
 
-  /* --------------------------------------------------
-     GALERIE PARALLAX
-  -------------------------------------------------- */
-  gsap.utils.toArray(".gallery-item").forEach(item => {
-    gsap.fromTo(item,
-      { backgroundPositionY: "-8%" },
-      {
-        backgroundPositionY: "8%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: item,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.4
-        }
-      }
-    );
+  item.addEventListener("mouseenter", () => {
+    gsap.to(item, {
+      y: -8,
+      duration: 0.35,
+      ease: "power2.out"
+    });
   });
 
-  /* --------------------------------------------------
-     HORIZONTAL SCROLL
-  -------------------------------------------------- */
-  const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+  item.addEventListener("mouseleave", () => {
+    gsap.to(item, {
+      y: 0,
+      duration: 0.35,
+      ease: "power2.out"
+    });
+  });
 
-  if (wrapper) {
-    const slides = wrapper.querySelectorAll(".inner-slide").length;
+});
 
-    gsap.to(wrapper, {
-      xPercent: -100 * (slides - 1),
+
+/* --------------------------------------------------
+   GALERIE PARALLAX
+-------------------------------------------------- */
+gsap.utils.toArray(".gallery-item").forEach(item => {
+  gsap.fromTo(
+    item,
+    { backgroundPositionY: "-8%" },
+    {
+      backgroundPositionY: "8%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: item,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.4
+      }
+    }
+  );
+});
+
+
+/* --------------------------------------------------
+   HORIZONTAL SCROLL (CENTERED SLIDES)
+-------------------------------------------------- */
+const wrapper = document.querySelector(".panel.horizontal .inner-wrapper");
+
+if (wrapper) {
+  const slides = wrapper.querySelectorAll(".inner-slide").length;
+
+  const slideWidth = 0.85;              // must match CSS (flex-basis: 85%)
+  const offset = (1 - slideWidth) * 50; // center first & last slide
+
+  gsap.fromTo(
+    wrapper,
+    { xPercent: offset },
+    {
+      xPercent: -100 * (slides - 1) - offset,
       ease: "none",
       scrollTrigger: {
         trigger: ".panel.horizontal",
@@ -212,9 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
         scrub: true,
         pin: true
       }
-    });
-  }
-});
+    }
+  );
+}
 
 /* --------------------------------------------------
    PANEL 2 – 3D CAROUSEL
@@ -223,6 +275,12 @@ const carousel = document.getElementById("carousel");
 
 if (carousel) {
   const items = carousel.querySelectorAll(".item");
+
+  // 🔒 Native Drag & Drop deaktivieren
+  items.forEach(item => {
+    item.setAttribute("draggable", "false");
+  });
+
   const total = items.length;
 
   let rotation = 0;
@@ -278,12 +336,21 @@ if (carousel) {
     isDragging = false;
   });
 
-  carousel.addEventListener("touchmove", e => {
-    rotation += (e.touches[0].clientX - startX) * 0.3;
-    startX = e.touches[0].clientX;
-    updateCarousel();
-  });
+  // 📱 Touch stabil + kein Page-Scroll / Ghost-Drag
+  carousel.addEventListener(
+    "touchmove",
+    e => {
+      e.preventDefault();
+      rotation += (e.touches[0].clientX - startX) * 0.3;
+      startX = e.touches[0].clientX;
+      updateCarousel();
+    },
+    { passive: false }
+  );
+  
 
   updateCarousel();
   animate();
 }
+
+});
