@@ -240,64 +240,49 @@
   });
   
   
-  /* --------------------------------------------------
-     HORIZONTAL SCROLL (CENTERED SLIDES)
+    /* --------------------------------------------------
+     GALERIE PARALLAX
   -------------------------------------------------- */
-  const panel = document.querySelector(".panel.horizontal");
-  const wrapper = panel?.querySelector(".inner-wrapper");
-  
-  if (panel && wrapper) {
-    const getSlideMetrics = () => {
-      const slides = Array.from(wrapper.querySelectorAll(".inner-slide"));
-      if (!slides.length) return null;
-
-      const first = slides[0];
-      const slideWidth = first.offsetWidth;
-      const panelWidth = panel.clientWidth;
-      const sidePadding = Math.max(0, (panelWidth - slideWidth) / 2);
-
-      wrapper.style.paddingLeft = `${sidePadding}px`;
-      wrapper.style.paddingRight = `${sidePadding}px`;
-
-      const travel = Math.max(0, wrapper.scrollWidth - panelWidth);
-      const startX = 0;
-      const endX = -travel;
-
-      return { startX, endX, travel };
-    };
-  
+  gsap.utils.toArray(".gallery-item").forEach(item => {
     gsap.fromTo(
-      wrapper,
+      item,
+      { backgroundPositionY: "-8%" },
       {
-        x: () => {
-          const metrics = getSlideMetrics();
-          return metrics ? metrics.startX : 0;
-        }
-      },
-      {
-        x: () => {
-          const metrics = getSlideMetrics();
-          return metrics ? metrics.endX : 0;
-        },
+        backgroundPositionY: "8%",
         ease: "none",
         scrollTrigger: {
-          trigger: ".panel.horizontal",
-          start: "top top",
-          end: () => {
-            const metrics = getSlideMetrics();
-            return metrics ? `+=${metrics.travel}` : "+=0";
-          },
-          scrub: true,
-          pin: true,
-          invalidateOnRefresh: true
+          trigger: item,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.4
         }
       }
     );
+  });
+  
+  
+  gsap.registerPlugin(ScrollTrigger);
 
-    window.addEventListener("load", () => {
-      ScrollTrigger.refresh();
-    });
+const track = document.querySelector(".h-track");
+const slides = gsap.utils.toArray(".h-slide");
+
+gsap.to(track, {
+  xPercent: -100 * (slides.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".h-section",
+    start: "top top",
+    end: () => "+=" + window.innerWidth * (slides.length - 1),
+    scrub: 1,
+    pin: true,
+    snap: {
+      snapTo: 1 / (slides.length - 1),
+      duration: 0.5,
+      ease: "power2.out"
+    },
+    invalidateOnRefresh: true
   }
+});
   
   /* --------------------------------------------------
      PANEL 2 – 3D CAROUSEL
