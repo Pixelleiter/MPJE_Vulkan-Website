@@ -219,26 +219,7 @@
   });
   
   
-  /* --------------------------------------------------
-     GALERIE PARALLAX
-  -------------------------------------------------- */
-  gsap.utils.toArray(".gallery-item").forEach(item => {
-    gsap.fromTo(
-      item,
-      { backgroundPositionY: "-8%" },
-      {
-        backgroundPositionY: "8%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: item,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.4
-        }
-      }
-    );
-  });
-  
+ 
   
     /* --------------------------------------------------
      GALERIE PARALLAX
@@ -370,3 +351,14 @@ gsap.to(track, {
   }
   
   });
+  
+/* =========================================================
+   MOBILE FIX: DISABLE HORIZONTAL SCROLL
+========================================================= */
+if (window.innerWidth < 768) {
+  ScrollTrigger.getAll().forEach(st => {
+    if (st.trigger && st.trigger.classList.contains("h-section")) {
+      st.kill();
+    }
+  });
+}
